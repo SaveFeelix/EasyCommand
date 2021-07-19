@@ -36,7 +36,7 @@ public class CommandListener {
             boolean commandFound = true;
             try {
 
-                System.out.print(prefix + " >");
+                System.out.print(prefix + " > ");
                 commandLine = reader.readLine();
                 String[] commandLineAsArray = commandLine.split(" ");
                 commandName = commandLineAsArray[0];
