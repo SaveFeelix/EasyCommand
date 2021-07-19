@@ -1,5 +1,6 @@
 package de.savefeelix.section.interfaces;
 
+import de.savefeelix.command.interfaces.ICommand;
 import de.savefeelix.utils.Registry;
 import org.jetbrains.annotations.NotNull;
 
@@ -45,6 +46,10 @@ public interface ISection {
                 tmpSection.set(section);
         });
         return tmpSection.get();
+    }
+
+    static ISection byCommand(ICommand command) {
+        return command.getInformation().getSection();
     }
 
 }
