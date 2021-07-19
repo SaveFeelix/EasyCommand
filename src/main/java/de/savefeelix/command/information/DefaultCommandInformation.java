@@ -1,4 +1,4 @@
-package de.savefeelix.command.records;
+package de.savefeelix.command.information;
 
 import de.savefeelix.command.interfaces.ICommandInformation;
 import de.savefeelix.section.interfaces.ISection;

@@ -46,7 +46,7 @@ dependencies {
 
 ```java
 import de.savefeelix.command.abstracts.DefaultCommand;
-import de.savefeelix.command.records.DefaultCommandInformation;
+import de.savefeelix.command.information.DefaultCommandInformation;
 
 public class MyCommand extends DefaultCommand {
 
@@ -85,8 +85,9 @@ public class MySection implements ISection {
 <hr />
 
 #### Instance CommandListener
+
 ```java
-import de.savefeelix.utils.record.CommandListener;
+import de.savefeelix.CommandListener;
 
 public class MyClass {
     public static void main(String[] args) {
