@@ -1,6 +1,7 @@
 package de.savefeelix;
 
 import de.savefeelix.command.interfaces.ICommand;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,20 +13,19 @@ import java.util.List;
 public class CommandListener {
 
     private final String prefix;
-    private static boolean isRunning;
+    private boolean isRunning;
 
-    static {
-        isRunning = true;
-    }
-
-    public CommandListener(String prefix) {
-        this.prefix = prefix;
+    public CommandListener(@Nullable String prefix) {
+        if (prefix != null)
+            this.prefix = prefix;
+        else this.prefix = "";
     }
 
     /**
      * Listen for Commands
      */
     public void listen() {
+        isRunning = true;
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String commandLine;
         String commandName;
@@ -36,7 +36,7 @@ public class CommandListener {
             boolean commandFound = true;
             try {
 
-                System.out.print(prefix);
+                System.out.print(prefix + " >");
                 commandLine = reader.readLine();
                 String[] commandLineAsArray = commandLine.split(" ");
                 commandName = commandLineAsArray[0];
@@ -71,13 +71,20 @@ public class CommandListener {
         isRunning = false;
     }
 
+    /**
+     * Check if the Listener is Running
+     * @return Boolean
+     */
+    public boolean isRunning() {
+        return isRunning;
+    }
 
     /**
      * Method to create an CommandListener Instance
      * @param prefix String
      * @return CommandListener
      */
-    public static CommandListener initialize(String prefix) {
+    public static CommandListener initialize(@Nullable String prefix) {
         return new CommandListener(prefix);
     }
 
@@ -86,7 +93,7 @@ public class CommandListener {
      * @return CommandListener
      */
     public static CommandListener initialize() {
-        return initialize("> ");
+        return initialize(null);
     }
 
 }
