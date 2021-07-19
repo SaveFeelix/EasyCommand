@@ -51,7 +51,12 @@ public interface ICommand {
      * @return List<ICommand>
      */
     static List<ICommand> bySection(ISection section) {
-        return all().stream().filter(command -> command.getInformation().getSection().equals(section)).toList();
+        List<ICommand> commands = new ArrayList<>();
+        all().forEach(command -> {
+            if (command.getInformation().getSection().getClass().equals(section.getClass()))
+                commands.add(command);
+        });
+        return commands;
     }
 
     /**
@@ -72,14 +77,16 @@ public interface ICommand {
     /**
      * Get Command by Alias
      *
-     * @param alias String
+     * @param aliases String
      * @return ICommand
      */
-    static ICommand byAlias(String alias) {
+    static ICommand byAlias(String aliases) {
         AtomicReference<ICommand> tmpCommand = new AtomicReference<>(null);
         all().forEach(command -> {
-            if (command.getInformation().getAliases().stream().map(String::toLowerCase).toList().contains(alias.toLowerCase()))
-                tmpCommand.set(command);
+            command.getInformation().getAliases().forEach(alias -> {
+                if (alias.equalsIgnoreCase(aliases))
+                    tmpCommand.set(command);
+            });
         });
         return tmpCommand.get();
     }
