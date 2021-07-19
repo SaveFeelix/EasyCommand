@@ -9,12 +9,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public record CommandListener(String prefix) {
+public class CommandListener {
 
+    private final String prefix;
     private static boolean isRunning;
 
     static {
         isRunning = true;
+    }
+
+    public CommandListener(String prefix) {
+        this.prefix = prefix;
     }
 
     /**
