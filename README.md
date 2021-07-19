@@ -83,19 +83,6 @@ public class MySection implements ISection {
     }
 }
 ```
-or <br />
-```java
-import de.savefeelix.section.interfaces.ISection;
-
-public record MySection(String name) implements ISection {
-    
-    @Override
-    public @NotNull String getName() {
-        return name;
-    }
-}
-
-```
 <hr />
 
 #### Instance CommandListener
