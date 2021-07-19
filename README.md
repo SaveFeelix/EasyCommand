@@ -21,7 +21,7 @@ API to create your own **CONSOLE** Command
     <dependency>
         <groupID>com.github.SaveFeelix</groupID>
         <artifactID>EasyCommand</artifactID>
-        <version>c5aaeb9fcf</version>
+        <version>03f300170f</version>
     </dependency>
 </dependencies>
 ```
@@ -35,7 +35,7 @@ repositories {
 ```
 ```groovy
 dependencies {
-    implementation 'com.github.SaveFeelix:EasyCommand:c5aaeb9fcf'
+    implementation 'com.github.SaveFeelix:EasyCommand:03f300170f'
 }
 ```
 <hr />
