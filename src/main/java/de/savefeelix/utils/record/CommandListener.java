@@ -1,4 +1,4 @@
-package de.savefeelix.utils;
+package de.savefeelix.utils.record;
 
 import de.savefeelix.command.interfaces.ICommand;
 
@@ -17,6 +17,9 @@ public record CommandListener(String prefix) {
         isRunning = true;
     }
 
+    /**
+     * Listen for Commands
+     */
     public void listen() {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String commandLine;
@@ -56,15 +59,27 @@ public record CommandListener(String prefix) {
         }
     }
 
+    /**
+     * Stop listening
+     */
     public void stop() {
         isRunning = false;
     }
 
 
+    /**
+     * Method to create an CommandListener Instance
+     * @param prefix String
+     * @return CommandListener
+     */
     public static CommandListener initialize(String prefix) {
         return new CommandListener(prefix);
     }
 
+    /**
+     * Method to create an CommandListener Instance
+     * @return CommandListener
+     */
     public static CommandListener initialize() {
         return initialize("> ");
     }
