@@ -166,6 +166,10 @@ public class MyClass implements CommandInitializer {
         listener = new CommandListener("MyPrefix");
         // Example 2
         listener = new CommandListener();
+        
+        // initialize
+        INSTANCE.initSections();
+        INSTANCE.initCommands();
 
         // Start Listening
         listener.listen();
