@@ -27,7 +27,6 @@ public class CommandListener {
      */
     public void listen() {
         reload = true;
-        isRunning = true;
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String commandLine;
         String commandName;
@@ -36,6 +35,7 @@ public class CommandListener {
 
         while (reload) {
             reload = false;
+            isRunning = true;
             while (isRunning) {
                 boolean commandFound = true;
                 try {
@@ -74,6 +74,14 @@ public class CommandListener {
      */
     public void stop() {
         isRunning = false;
+    }
+
+    /**
+     * Reload Listening
+     */
+    public void reload() {
+        isRunning = false;
+        reload = true;
     }
 
     /**
